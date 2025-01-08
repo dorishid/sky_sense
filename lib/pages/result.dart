@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lottie/lottie.dart';
 
 class Result extends StatefulWidget {
     final String place;
@@ -24,6 +24,8 @@ class _ResultState extends State<Result> {
             throw Exception("Error!");
         }
     }
+  
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,6 +64,12 @@ class _ResultState extends State<Result> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
+
+                                        //animation
+                                        Lottie.asset('assets/rain.json'),
+                                      
+                                        
+
                                         Text(
                                             '${data["name"]}',
                                             style: const TextStyle(fontSize: 30),
@@ -82,6 +90,8 @@ class _ResultState extends State<Result> {
                                             '${data["weather"][0]["description"]}',
                                             style: const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
                                         ),
+
+                                    
                                     ],
                                 ),
                             ),
