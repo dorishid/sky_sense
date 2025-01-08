@@ -56,27 +56,37 @@ class _ResultState extends State<Result> {
                         if (snapshot.hasData) {
                             final data = snapshot.data!;
 
-                            return Container(
+                           return Center(
+                            child: Container(
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-
-                                        Image(image: NetworkImage("https://flagsapi.com/${data["sys"]["country"]}/shiny/64.png")),
-
-                                        Text("Suhu: ${data["main"]["feels_like"]} °C",
-                                        
-                                        style: const TextStyle(
-                                            fontSize: 20
-                                        ),),
-
-                                        Text('Kecepatan angin : ${data["wind"]["speed"]} m/s',
-                                        style: const TextStyle(
-                                            fontSize: 20
-                                        ),),
-
+                                        Text(
+                                            '${data["name"]}',
+                                            style: const TextStyle(fontSize: 30),
+                                        ),
+                                        Image(
+                                            image: NetworkImage(
+                                                "https://flagsapi.com/${data["sys"]["country"]}/shiny/64.png"),
+                                        ),
+                                        Text(
+                                            "${data["main"]["feels_like"]} °C",
+                                            style: const TextStyle(fontSize: 40),
+                                        ),
+                                        Text(
+                                            '${data["wind"]["speed"]} m/s',
+                                            style: const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                                        ),
+                                        Text(
+                                            '${data["weather"][0]["description"]}',
+                                            style: const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                                        ),
                                     ],
                                 ),
-                            );
+                            ),
+                        );
+
                         } else {
                             return const Text("Tempat tidak diketahui");
                         }
